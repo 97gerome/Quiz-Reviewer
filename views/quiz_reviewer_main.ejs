@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="../public/assets/images/quiz_reviewer_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../public/css/quiz_reviewer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+<style>
+</style>
+</head>
+<body>
+    <div class = "background-div">
+        <div class = "pop-up-container">
+            <div class = "pop-up-div" id = "edit_question_pop_up">
+                <div class = "edit-question-cell">
+                    <h6 class = "main-title-text" id = "edit_question_details_text"></h6>
+                    <span class = "edit-question-textarea" role = "textbox" contenteditable=""></span>
+                    <div class = "edit-question-container">
+                    </div>
+                </div>
+                <div class = "edit-questions-button-container">
+                    <button class = "edit-question-pop-up-button" id = "save_edit_question_button">Save</button>
+                    <button class = "edit-question-pop-up-button" id = "cancel_edit_question_button">Cancel</button>
+                </div>
+            </div>
+            <div class = "pop-up-div" id = "delete_question_pop_up">
+                <div class = "pop-up-text-container">
+                    <h6>Are you sure you want to delete this question?</h6>
+                </div>
+                <div class = "pop-up-button-container">
+                    <button class="pop-up-button" id = "confirm_delete_question_button">Yes</button>
+                    <button class = "pop-up-button" id = "cancel_delete_question_button">Cancel</button>
+                </div>
+            </div>
+            <div class = "pop-up-div" id = "log_out_pop_up">
+                <div class = "pop-up-text-container">
+                    <h6>Are you sure you want to Log Out?</h6>
+                </div>
+                <div class = "pop-up-button-container">
+                    <form action = "/logout?_method=DELETE" method = "POST">
+                        <button class="pop-up-button" id = "confirm_log_out_button">Yes</button>
+                        <button class = "pop-up-button" id = "cancel_log_out_button" type = "button">Cancel</button>
+                    </form>
+                </div>
+            </div>
+            <div class = "pop-up-div" id = "notification_pop_up">
+                <div class = "pop-up-text-container">
+                    <h6 id = "notification_pop_up_text"></h6>
+                </div>
+                <div class = "pop-up-button-container">
+                    <button class = "pop-up-button" id = "notification_ok_button">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class = "navbar-div">
+            <div class = "navbar-title-container">
+                <img src = "../public/assets/images/quiz_reviewer_logo.png" id = "main_logo">
+                <h6>Quiz Reviewer</h6>
+            </div>
+            <div class = "navbar-item-div" id = "courses_button">
+                <i class = "material-icons">import_contacts</i>
+                <h6>Courses</h6>
+            </div>
+            <div class = "navbar-item-div" id = "my_account_button">
+                <i class = "material-icons">person</i>
+                <h6>My Account</h6>
+            </div>
+            <div class = "navbar-item-div" id = "logout_button">
+                <i class = "material-icons">power_settings_new</i>
+                <h6>Log Out</h6>
+            </div>
+        </div>
+        <div class = "mainview-div">
+                <div class = "main-container-div">
+                    <div class = "top-bar">
+                        <img src = "../public/assets/images/white_quiz_reviewer_logo.png" id = "top_bar_logo">
+                    </div>
+                    <div class = "course-view-container">
+                        <h6 class = "view-title-text">Course View</h6>
+                        <div class = "course-view-div">
+                            <h6 class = "main-title-text" id = "course_view_course_name"></h6>
+                            <div class = "course-view-nav-container">
+                                <div class = "course-view-nav-div" id = "add_questions_tab">
+                                    <h6 class = "course-view-nav-text">Add Question</h6>
+                                </div>
+                                <div class = "course-view-nav-div" id = "exams_tab">
+                                    <h6 class = "course-view-nav-text">Exams</h6>
+                                </div>
+                                <div class = "course-view-nav-div" id = "grades_tab">
+                                    <h6 class = "course-view-nav-text">Grades</h6>
+                                </div>
+                            </div>
+                            <div class = "course-view-nav-highlight"> </div>
+                            <div id = "add_questions_container">
+                                <div class = "new-question-co-container">
+                                    <button id = "selected_course_outcome_button">Course Outcome</button>
+                                    <div class = "course-outcome-dropdown">
+                                        <button class = "course-outcome-button" value = "1">Course Outcome 1</button>
+                                        <button class = "course-outcome-button" value = "2">Course Outcome 2</button>
+                                        <button class = "course-outcome-button" value = "3">Course Outcome 3</button>
+                                        <button class = "course-outcome-button" value = "4">Course Outcome 4</button>
+                                        <button class = "course-outcome-button" value = "5">Course Outcome 5</button>
+                                        <button class = "course-outcome-button" value = "6">Course Outcome 6</button>
+                                    </div>
+                                </div>
+                                <div class = "new-question-cell">
+                                    <div class = "loader-container" id = "upload_loader">
+                                        <div class="spinner">
+                                            <div class="rect1"></div>
+                                            <div class="rect2"></div>
+                                            <div class="rect3"></div>
+                                            <div class="rect4"></div>
+                                            <div class="rect5"></div>
+                                          </div>
+                                    </div>
+                                    <div class = "question-type-container">
+                                        <div class = "question-type-highlight">
+                                        </div>
+                                        <div class = "question-type-div" id = "multiple_choice_button">
+                                            <h6>Multiple Choice</h6>
+                                        </div>
+                                        <div class = "question-type-div" id = "true_false_button">
+                                            <h6>True or False</h6>
+                                        </div>
+                                        <div class = "question-type-div" id = "fill_blanks_button">
+                                            <h6>Fill in the Blanks</h6>
+                                        </div>
+                                    </div>
+                                    <div class = "new-question-details-container">
+                                        <textarea class = "question-content-textarea" id = "question_textarea" type = "text" placeholder = "Question..."></textarea>
+                                        <div class = "new-answer-container" id = "multiple_choice_container">
+                                            <div class = "new-answer-div">
+                                                <div class = "correct-answer-div" id = "mcq_correct_answer_div1">
+                                                    <i class = "material-icons correct-icon"></i>
+                                                </div>
+                                                <input autocomplete = "off" class = "new-answer-input" id = "mcq_answer1" type="text" placeholder="Answer...">
+                                            </div>
+                                            <div class = "new-answer-div">
+                                                <div class = "correct-answer-div" id = "mcq_correct_answer_div2">
+                                                    <i class = "material-icons correct-icon"></i>
+                                                </div>
+                                                <input autocomplete = "off" class = "new-answer-input" id = "mcq_answer2" type="text" placeholder="Answer...">
+                                            </div>
+                                            <div class = "new-answer-div">
+                                                <div class = "correct-answer-div" id = "mcq_correct_answer_div3">
+                                                    <i class = "material-icons correct-icon"></i>
+                                                </div>
+                                                <input autocomplete = "off" class = "new-answer-input" id = "mcq_answer3" type="text" placeholder="Answer...">
+                                            </div>
+                                            <div class = "new-answer-div">
+                                                <div class = "correct-answer-div" id = "mcq_correct_answer_div4">
+                                                    <i class = "material-icons correct-icon"></i>
+                                                </div>
+                                                <input  autocomplete = "off"class = "new-answer-input" id = "mcq_answer4" type="text" placeholder="Answer...">
+                                            </div>
+                                            <div class = "upload-button-container">
+                                                <button id = "upload_mcq_button">Upload</button>
+                                            </div>
+                                        </div>
+                                        <div class = "new-answer-container" id = "true_false_container">
+                                            <div class = "new-answer-div">
+                                                <div class = "correct-answer-div" id = "true_correct_answer_div">
+                                                    <i class = "material-icons correct-icon"></i>
+                                                </div>
+                                                <h6>True</h6>
+                                            </div>
+                                            <div class = "new-answer-div">
+                                                <div class = "correct-answer-div" id = "false_correct_answer_div">
+                                                    <i class = "material-icons correct-icon"></i>
+                                                </div>
+                                                <h6>False</h6>
+                                            </div>
+                                            <div class = "upload-button-container">
+                                                <button id = "upload_tf_button">Upload</button>
+                                            </div>
+                                        </div>
+                                        <div class = "new-answer-container" id = "fill_blanks_container">
+                                            <div class = "new-answer-div">
+                                                <div id = "fill_correct_answer_div">
+                                                    <i class = "material-icons correct-icon">done</i>
+                                                </div>
+                                                <input autocomplete = "off" class = "new-answer-input" id = "fill_answer" type="text" placeholder="Answer...">
+                                            </div>
+                                            <div class = "upload-button-container">
+                                                <button id = "upload_fill_button">Upload</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id = "exams_container">
+                                <div class = "loader-container" id = "exams_container_loader">
+                                    <div class="spinner">
+                                        <div class="rect1"></div>
+                                        <div class="rect2"></div>
+                                        <div class="rect3"></div>
+                                        <div class="rect4"></div>
+                                        <div class="rect5"></div>
+                                      </div>
+                                </div>
+                            </div>
+                            <div id = "grades_container">
+                                <div class = "loader-container" id = "grades_container_loader">
+                                    <div class="spinner">
+                                        <div class="rect1"></div>
+                                        <div class="rect2"></div>
+                                        <div class="rect3"></div>
+                                        <div class="rect4"></div>
+                                        <div class="rect5"></div>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class = "loader-container" id = "course_view_loader">
+                                <div class="spinner">
+                                    <div class="rect1"></div>
+                                    <div class="rect2"></div>
+                                    <div class="rect3"></div>
+                                    <div class="rect4"></div>
+                                    <div class="rect5"></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "courses-container">
+                        <h6 class = "view-title-text">Courses</h6>
+                        <div class = "my-courses-container">
+                        </div>
+                        <div class = "other-courses-container">
+                        </div>
+                        <div class = "loader-container" id = "courses_loader">
+                            <div class="spinner">
+                                <div class="rect1"></div>
+                                <div class="rect2"></div>
+                                <div class="rect3"></div>
+                                <div class="rect4"></div>
+                                <div class="rect5"></div>
+                              </div>
+                        </div>
+                    </div>
+                    <div class = "my-account-container">
+                        <h6 class = "view-title-text">My Account</h6>
+                        <div class = "my-account-div">
+                            <h6 class = "main-title-text">Profile</h6>
+                            <div class = "profile-cell">
+                                <div class = "profile-details-container">
+                                    <h6>Name</h6>
+                                    <input autocomplete = "off" id = "my_account_name" disabled>
+                                </div>
+                                <div class = "profile-details-container">
+                                    <h6>Email</h6>
+                                    <input id = "my_account_email" disabled>
+                                </div>
+                                <div class = "profile-details-container">
+                                    <h6>Account Type</h6>
+                                    <input id = "my_account_type" disabled>
+                                </div>
+                                <div class = "my-account-button-container">
+                                    <button class = "my-account-button" id = "my_account_edit_button">Edit</button>
+                                    <button class = "my-account-button" id = "my_account_save_button">Save</button>
+                                    <button class = "my-account-button" id = "my_account_cancel_button">Cancel</button>
+                                </div>
+                            </div>
+                            <h6 class = "main-title-text">Change Password</h6>
+                            <div class = "change-password-cell">
+                                <div class = "profile-details-container">
+                                    <h6>Old Password</h6>
+                                    <input autocomplete = "off" type = "password" id = "old_password">
+                                </div>
+                                <div class = "profile-details-container">
+                                    <h6>New Password</h6>
+                                    <input autocomplete = "off" type = "password" id = "new_password">
+                                    <i class = "material-icons" id = "new_password_visibility">visibility</i>
+                                </div>
+                                <div class = "my-account-button-container">
+                                    <button class = "my-account-button" id = "save_new_password_button">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "my-questions-container">
+                        <h6 class = "view-title-text">My Questions</h6>
+                        <div class = "my-questions-div">
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+
+<script src = "public/js/quiz_reviewer_main.js"></script>
+
+</html>

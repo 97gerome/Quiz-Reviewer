@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="../public/assets/images/quiz_reviewer_logo.png">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="public/css/quiz_reviewer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+<style>
+</style>
+</head>
+<body>
+    <div class = "background-div">
+        <div class = "container-div">
+            <div class = "center-div">
+                <div class = "login-logo-container">
+                    <img src = "../public/assets/images/quiz_reviewer_logo.png" id = "login_logo">
+                </div>
+                <div class = "inner-center-div">
+                    <div id = "lower_border">
+
+                    </div>
+                    <form id = "login_form" action = "/main" method = "POST">
+                        <h6 class = "title-text">Login</h6>
+                        <div class = "textbox-container">
+                            <div class = "icon-wrapper">
+                                <i class="material-icons text-box-icon">mail</i>
+                            </div>
+                            <input autocomplete = "off" class = "textbox-input" type = "text" placeholder = "Email" id = "email_login" name = "email_login">
+                        </div>
+                        <div class = "textbox-container">
+                            <div class = "icon-wrapper">
+                                <i class="material-icons text-box-icon">lock</i>
+                            </div>
+                            <input autocomplete = "off" class = "textbox-input" type = "password" placeholder = "Password" id = "password_login" name = "password_login">
+                        </div>
+                        <div class = "button-wrapper">
+                            <button id = "login_button">LOGIN</button>
+                        </div>
+                        <div class = "clickable-text-wrapper">
+                            <a class = "clickable-text" id = "forgot_password_button">Forgot your password?</a>
+                        </div>
+                        <div class = "clickable-text-wrapper">
+                            <a class = "clickable-text" id = "show_signup_button">Sign Up</a>
+                        </div>
+                        <div class = "text-wrapper">
+                            <h6 id = "login_message"><% if(messages.error) %><%= messages.error %></h6>
+                            <div class = "loader-container" id = "login_loader">
+                                <div class="spinner">
+                                    <div class="rect1"></div>
+                                    <div class="rect2"></div>
+                                    <div class="rect3"></div>
+                                    <div class="rect4"></div>
+                                    <div class="rect5"></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div id = "signup_form" >
+                        <h6 class = "title-text" id = "signup_title_text">Sign Up</h6>
+                        <div class = "textbox-container" id = "name_signup_container">
+                            <div class = "icon-wrapper">
+                                <i class="material-icons text-box-icon">person</i>
+                            </div>
+                            <input autocomplete = "off" class = "textbox-input" type = "text" placeholder = "Name" id = "name_signup" name = "name_signup">
+                        </div>
+                        <div class = "textbox-container" id = "email_signup_container">
+                            <div class = "icon-wrapper">
+                                <i class="material-icons text-box-icon">mail</i>
+                            </div>
+                            <input autocomplete = "off" class = "textbox-input" type = "email" placeholder = "Email" id = "email_signup" name = "email_signup" >
+                        </div>
+                        <div class = "radio-wrapper">
+                            <label class="radio-container">Student
+                                <input type="radio" checked="checked" name="signup_account_radio" value = "Student">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="radio-container">Instructor
+                                <input type="radio" name="signup_account_radio" value = "Instructor">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        
+                        <div class = "button-wrapper">
+                            <button id = "signup_button" name = "signup_button">SIGN UP</button>
+                        </div>
+                        <div class = "clickable-text-wrapper">
+                            <h6 class = "normal-text">Already a member? <a class = "clickable-text" id = "show_login_button">Log In</a></h6>
+                        </div>
+                        <div class = "text-wrapper">
+                            <div class = "loader-container" id = "signup_loader">
+                                <div class="spinner">
+                                    <div class="rect1"></div>
+                                    <div class="rect2"></div>
+                                    <div class="rect3"></div>
+                                    <div class="rect4"></div>
+                                    <div class="rect5"></div>
+                                  </div>
+                            </div>
+                            <h6 id = "signup_message"></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src = "public/js/quiz_reviewer_login.js"></script>
+
+</script>
+
+</html>
+

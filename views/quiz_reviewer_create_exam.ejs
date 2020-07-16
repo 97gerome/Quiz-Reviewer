@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="../public/assets/images/quiz_reviewer_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../public/css/quiz_reviewer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+<style>
+</style>
+</head>
+<body>
+    <div class = "background-div">
+        <div class = "pop-up-container">
+            <div class = "pop-up-div" id = "notification_pop_up">
+                <div class = "pop-up-text-container">
+                    <h6 id = "notification_pop_up_text"></h6>
+                </div>
+                <div class = "pop-up-button-container">
+                    <button class = "pop-up-button" id = "notification_ok_button">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class = "create-exam-back-container">
+            <div class = "create-exam-container">
+                <div class = "create-exam-details-container">
+                    <h6 class = "main-title-text" id = "create_exam_course"><%= course_name %></h6>
+                    <input autocomplete = "off" class = "create-exam-input" id="create_exam_name_input" placeholder="Exam Name">
+                    <h6 class = "sub-title-text">Exam Coverage</h6>
+                    <div class = "exam-coverage-container">
+                    </div>
+                    <h6 class = "sub-title-text">Exam Visibility</h6>
+                    <div class = "radio-wrapper">
+                        <label class="radio-container">Public
+                            <input type="radio" checked="checked" name="visibility_radio" value = 11>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-container">Hidden
+                            <input type="radio" name="visibility_radio" value = 1>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class = "create-exam-buttons-container">
+                        <button id = "save_create_exam_button">Save</button>
+                        <form id = "cancel_create_exam_form" action = "/main" method = "GET">
+                            <button id = "cancel_create_exam_button">Cancel</button>
+                        </form>
+                    </div>
+                    <div class = "loader-container" id = "create_exam_details_container">
+                        <div class="spinner">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                          </div>
+                    </div>
+                </div>
+                <div class = "create-exam-added-questions-container">
+                    <h6 class = "create-exam-title-black">Added questions</h6>
+                </div>
+                <div class = "create-exam-questions-container">
+                    <h6 class = "create-exam-title-white">Questions</h6>
+                    <div class = "loader-container" id = "create_exam_questions_loader">
+                        <div class="spinner">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+</script>
+
+<script src = "public/js/quiz_reviewer_create_exam.js"></script>
+
+</html>

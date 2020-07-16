@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="../public/assets/images/quiz_reviewer_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../public/css/quiz_reviewer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+<style>
+</style>
+</head>
+<body>
+    <div class = "background-div">
+        <div class = "sidebar-div">
+            <div class = "exam-logo-container">
+                <img src = "../public/assets/images/quiz_reviewer_logo.png" id = "exam_logo">
+            </div>
+            <div class = "return-to-main-button-container">
+                <button id = "return_to_main_button">Return to Main</button>
+            </div>
+        </div>
+        <div class = "exam-view-container">
+            <div class = "current-exam-details-container">
+                <h6 class = "exam-course-text"></h6>
+                <h6 class = "exam-name-main-text"></h6>
+            </div>
+            <div class = "submit-button-container">
+                <button id = "submit_exam_button">Submit</button>
+            </div>
+            <div class = "exam-container-div">
+                <h6 class = "question-counter-text"></h6>
+                <h6 class = "exam-question-text"></h6>
+                <div class = "exam-answers-container">
+                </div>
+                <div class = "check-question-button-container">
+                    <button class = "check-question-button">Check</button>
+                </div>
+                <div id = "answer_indicator_div">
+                    <h6 id = "answer_status_text">Correct!</h6>
+                    <div class = "next-question-button-container">
+                        <button id = "next_question_button">Next</button>
+                    </div>                    
+                </div>
+                <div class = "loader-container">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class = "pop-up-container">
+            <div class = "pop-up-div" id = "submit_exam_pop_up">
+                <div class = "pop-up-text-container">
+                    <h6>Are you sure you want to submit?</h6>
+                </div>
+                <div class = "pop-up-button-container">
+                    <form id = "submit_exam_form" method = "GET">
+                        <button class="pop-up-button" id = "confirm_submit_exam_button">Yes</button>
+                    </form>
+                    <button class = "pop-up-button" id = "cancel_submit_exam_button">Cancel</button>
+                </div>
+            </div>
+            <div class = "pop-up-div" id = "return_to_main_pop_up">
+                <div class = "pop-up-text-container">
+                    <h6>Are you sure you want to return to main?</h6>
+                </div>
+                <div class = "pop-up-button-container">
+                    <form method = "GET" action = "/main">
+                        <button class="pop-up-button">Yes</button>
+                        <button class = "pop-up-button" id = "cancel_return_to_main_button" type = "button">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src = "public/js/quiz_reviewer_exam.js"></script>
+
+</html>
