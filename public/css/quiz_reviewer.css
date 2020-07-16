@@ -121,6 +121,7 @@ button:hover, #cancel_create_course_button:hover{
     color: #373F51;
     width: calc(100% - 70px);
     font-family: Muli;
+    font-size: 14px;
 }
 
 .clickable-text{
