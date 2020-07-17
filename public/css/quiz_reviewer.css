@@ -113,7 +113,7 @@ button:hover, #cancel_create_course_button:hover{
 }
 
 .textbox-input{
-    height: 100%;
+    height: 40px;
     display: inline-block;
     border: 0;
     vertical-align: top;
@@ -123,6 +123,7 @@ button:hover, #cancel_create_course_button:hover{
     width: calc(100% - 70px);
     font-family: Muli;
     font-size: 13px;
+    padding: 0;
 }
 
 .clickable-text{
@@ -139,6 +140,7 @@ button:hover, #cancel_create_course_button:hover{
     text-align: center;
     position: relative;
 }
+
 
 #login_form{
     position: absolute;
@@ -347,7 +349,7 @@ button:hover, #cancel_create_course_button:hover{
 
 .main-container-div{
     display: inline-block;
-    height: 100vh;
+    height: calc(100vh - 60px);
     width: 100%;
 }
 
@@ -557,7 +559,7 @@ button:hover, #cancel_create_course_button:hover{
     width: 100%;
     display: block;
     height: auto;
-
+    float: left;
 }
 
 .course-view-container{
@@ -609,6 +611,7 @@ button:hover, #cancel_create_course_button:hover{
     border-radius: 10px;
     overflow-y: scroll;
     position: relative;
+    overflow-x: hidden;
 }
 
 .course-view-nav-container{
@@ -1931,7 +1934,8 @@ input:disabled {
 }
 
 #course_view_loader{
-    z-index: 999;
+    z-index: 800;
+    border-radius: 10px;
 }
 
 
@@ -2023,6 +2027,7 @@ input:disabled {
         width: 100%;
         overflow-y: auto !important;
         height: auto;
+        padding-bottom: 50px;
     }
 
     [class = "main-container-div"]{
@@ -2150,6 +2155,10 @@ input:disabled {
         margin: 10px;
     }
 
+    [class = "my-account-div"]{
+        height: auto;
+    }
+
     [class = "my-account-label"]{
         width: 100px !important;
         margin: 10px !important;
@@ -2165,7 +2174,7 @@ input:disabled {
     [class = "my-questions-container"]{
         overflow-y: auto !important;
         height: auto !important;
-
+        padding-bottom: 50px;
     }
 
     [class = "edit-my-question-text"]{
@@ -2235,5 +2244,4 @@ input:disabled {
     [class = "edit-questions-button-container"]{
         margin-top: 10px;
     }
-    
 }

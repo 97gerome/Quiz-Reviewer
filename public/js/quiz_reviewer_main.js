@@ -71,11 +71,13 @@ $(document).ready(function(){
     $("#courses_button").click(function(){
       show_main_containers(".my-account-container", ".my-questions-container", ".course-view-container", ".courses-container");
       $(".navbar-div").animate({left: "-240px"});
+      $('.main-container-div').animate({scrollTop:0}, '200');
     });
   
     $("#my_account_button").click(function(){
       show_main_containers(".course-view-container", ".courses-container", ".my-account-container", ".my-questions-container");
       $(".navbar-div").animate({left: "-240px"});
+      $('.main-container-div').animate({scrollTop:0}, '200');
     });
   
     $("#logout_button").click(function(){
@@ -152,10 +154,12 @@ $(document).ready(function(){
 
     $(document).on("click", ".join-course-button", function() {
       join_course($(this).data("courseId"));
+      $('.main-container-div').animate({scrollTop:0}, '200');
     })
 
     $(document).on("click", ".leave-course-button", function() {
       leave_course($(this).data("accountCourseId"));
+      $('.main-container-div').animate({scrollTop:0}, '200');
     })
 
     $(document).on("click", "#create_new_course_button", function() {
@@ -210,8 +214,8 @@ $(document).ready(function(){
       $("#upload_fill_button").data("courseId", $(this).data("courseId"));
       $("#upload_mcq_button").data("courseId", $(this).data("courseId"));
       $("#upload_tf_button").data("courseId", $(this).data("courseId"));
+      $('.main-container-div').animate({scrollTop:0}, '200');
       if ($(".course-view-div").data("courseId") != $(this).data("courseId")){
-        $('.main-container-div').animate({scrollTop:0}, '200');
         $("#exams_container_loader").css({display: "flex"});
         $("#grades_container_loader").css({display: "flex"});
         $("#exams_container").find(".exam-cell").remove();
@@ -310,7 +314,7 @@ $(document).ready(function(){
     })
 
     $("#menu_icon").click(function(){
-      $(".navbar-div").animate({left: "0px"}, 100);
+      $(".navbar-div").animate({left: "0px"}, 200);
     })
 
 });
@@ -1279,6 +1283,7 @@ function populate_question_details(data){
 }
 
 function refresh_my_questions(){
+  $('.main-container-div').animate({scrollTop:0}, '200');
   $(".my-questions-div").empty();
   get_my_questions();
 }
