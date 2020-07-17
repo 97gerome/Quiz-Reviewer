@@ -201,7 +201,7 @@ function populate_exam_question_details(data){
 
       $(".exam-answers-container").append(`
         <div class = "exam-answers-cell" id = "exam_answer_cell${i}">
-          <h6>${item.answer_content}</h6>
+          <h6 class = "exam-answers-cell-text">${item.answer_content}</h6>
         </div>
         `);
 
@@ -215,13 +215,13 @@ function populate_exam_question_details(data){
   else if(data[0].question_type_id == 11){
       $(".exam-answers-container").append(`
         <div class = "exam-answers-cell" id = "exam_answer_cell_true">
-          <h6>True</h6>
+          <h6 class = "exam-answers-cell-text" >True</h6>
         </div>
         `);
 
       $(".exam-answers-container").append(`
         <div class = "exam-answers-cell" id = "exam_answer_cell_false">
-          <h6>False</h6>
+          <h6 class = "exam-answers-cell-text">False</h6>
         </div>
         `);
 

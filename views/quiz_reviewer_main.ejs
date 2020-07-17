@@ -77,10 +77,10 @@
         <div class = "mainview-div">
                 <div class = "main-container-div">
                     <div class = "top-bar">
+                        <i class = "material-icons menu-icon" id = "menu_icon">menu</i>
                         <img src = "../public/assets/images/white_quiz_reviewer_logo.png" id = "top_bar_logo">
                     </div>
                     <div class = "course-view-container">
-                        <h6 class = "view-title-text">Course View</h6>
                         <div class = "course-view-div">
                             <h6 class = "main-title-text" id = "course_view_course_name"></h6>
                             <div class = "course-view-nav-container">
@@ -96,17 +96,6 @@
                             </div>
                             <div class = "course-view-nav-highlight"> </div>
                             <div id = "add_questions_container">
-                                <div class = "new-question-co-container">
-                                    <button id = "selected_course_outcome_button">Course Outcome</button>
-                                    <div class = "course-outcome-dropdown">
-                                        <button class = "course-outcome-button" value = "1">Course Outcome 1</button>
-                                        <button class = "course-outcome-button" value = "2">Course Outcome 2</button>
-                                        <button class = "course-outcome-button" value = "3">Course Outcome 3</button>
-                                        <button class = "course-outcome-button" value = "4">Course Outcome 4</button>
-                                        <button class = "course-outcome-button" value = "5">Course Outcome 5</button>
-                                        <button class = "course-outcome-button" value = "6">Course Outcome 6</button>
-                                    </div>
-                                </div>
                                 <div class = "new-question-cell">
                                     <div class = "loader-container" id = "upload_loader">
                                         <div class="spinner">
@@ -131,6 +120,17 @@
                                         </div>
                                     </div>
                                     <div class = "new-question-details-container">
+                                        <div class = "new-question-co-container">
+                                            <button id = "selected_course_outcome_button">Course Outcome</button>
+                                            <div class = "course-outcome-dropdown">
+                                                <button class = "course-outcome-button" value = "1">Course Outcome 1</button>
+                                                <button class = "course-outcome-button" value = "2">Course Outcome 2</button>
+                                                <button class = "course-outcome-button" value = "3">Course Outcome 3</button>
+                                                <button class = "course-outcome-button" value = "4">Course Outcome 4</button>
+                                                <button class = "course-outcome-button" value = "5">Course Outcome 5</button>
+                                                <button class = "course-outcome-button" value = "6">Course Outcome 6</button>
+                                            </div>
+                                        </div>
                                         <textarea class = "question-content-textarea" id = "question_textarea" type = "text" placeholder = "Question..."></textarea>
                                         <div class = "new-answer-container" id = "multiple_choice_container">
                                             <div class = "new-answer-div">
@@ -226,7 +226,6 @@
                         </div>
                     </div>
                     <div class = "courses-container">
-                        <h6 class = "view-title-text">Courses</h6>
                         <div class = "my-courses-container">
                         </div>
                         <div class = "other-courses-container">
@@ -247,16 +246,16 @@
                             <h6 class = "main-title-text">Profile</h6>
                             <div class = "profile-cell">
                                 <div class = "profile-details-container">
-                                    <h6>Name</h6>
-                                    <input autocomplete = "off" id = "my_account_name" disabled>
+                                    <h6 class = "my-account-label">Name</h6>
+                                    <input autocomplete = "off" class = "my-account-input"id = "my_account_name" disabled>
                                 </div>
                                 <div class = "profile-details-container">
-                                    <h6>Email</h6>
-                                    <input id = "my_account_email" disabled>
+                                    <h6 class = "my-account-label">Email</h6>
+                                    <input class = "my-account-input" id = "my_account_email" disabled>
                                 </div>
                                 <div class = "profile-details-container">
-                                    <h6>Account Type</h6>
-                                    <input id = "my_account_type" disabled>
+                                    <h6 class = "my-account-label">Account Type</h6>
+                                    <input class = "my-account-input" id = "my_account_type" disabled>
                                 </div>
                                 <div class = "my-account-button-container">
                                     <button class = "my-account-button" id = "my_account_edit_button">Edit</button>
@@ -267,12 +266,12 @@
                             <h6 class = "main-title-text">Change Password</h6>
                             <div class = "change-password-cell">
                                 <div class = "profile-details-container">
-                                    <h6>Old Password</h6>
-                                    <input autocomplete = "off" type = "password" id = "old_password">
+                                    <h6 class = "my-account-label">Old Password</h6>
+                                    <input autocomplete = "off" class = "my-account-input" type = "password" id = "old_password">
                                 </div>
                                 <div class = "profile-details-container">
-                                    <h6>New Password</h6>
-                                    <input autocomplete = "off" type = "password" id = "new_password">
+                                    <h6 class = "my-account-label">New Password</h6>
+                                    <input autocomplete = "off" class = "my-account-input" type = "password" id = "new_password">
                                     <i class = "material-icons" id = "new_password_visibility">visibility</i>
                                 </div>
                                 <div class = "my-account-button-container">

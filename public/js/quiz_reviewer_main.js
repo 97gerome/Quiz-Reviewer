@@ -10,6 +10,7 @@ $(document).ready(function(){
     get_account_type();
     get_account_details();
     get_my_questions();
+    
 
     $("#true_false_button").click(function(){
       $(".question-type-highlight").animate({marginTop: "40px"}, { duration: 200, queue: false });
@@ -69,10 +70,12 @@ $(document).ready(function(){
   
     $("#courses_button").click(function(){
       show_main_containers(".my-account-container", ".my-questions-container", ".course-view-container", ".courses-container");
+      $(".navbar-div").animate({left: "-240px"});
     });
   
     $("#my_account_button").click(function(){
       show_main_containers(".course-view-container", ".courses-container", ".my-account-container", ".my-questions-container");
+      $(".navbar-div").animate({left: "-240px"});
     });
   
     $("#logout_button").click(function(){
@@ -193,13 +196,13 @@ $(document).ready(function(){
     })
 
     $("#selected_course_outcome_button").click(function(){
-      $(".new-question-co-container").animate({height: "342px"}, 200);
+      $(".new-question-co-container").animate({height: "338px"}, 200);
     })
 
     $(".course-outcome-button").click(function(){
       $("#selected_course_outcome_button").data("courseOutcome", $(this).val());
       $("#selected_course_outcome_button").text($(this).text());
-      $(".new-question-co-container").animate({height: "42px"}, 200);
+      $(".new-question-co-container").animate({height: "38px"}, 200);
     })
 
     $(document).on("click", ".view-course-button", function() {
@@ -208,6 +211,7 @@ $(document).ready(function(){
       $("#upload_mcq_button").data("courseId", $(this).data("courseId"));
       $("#upload_tf_button").data("courseId", $(this).data("courseId"));
       if ($(".course-view-div").data("courseId") != $(this).data("courseId")){
+        $('.main-container-div').animate({scrollTop:0}, '200');
         $("#exams_container_loader").css({display: "flex"});
         $("#grades_container_loader").css({display: "flex"});
         $("#exams_container").find(".exam-cell").remove();
@@ -305,6 +309,10 @@ $(document).ready(function(){
       get_all_questions($(this).data("courseId"));
     })
 
+    $("#menu_icon").click(function(){
+      $(".navbar-div").animate({left: "0px"}, 100);
+    })
+
 });
 
 function get_account_type(){
@@ -324,6 +332,7 @@ function get_account_type(){
       show_create_course();
     }
     initialize_course_view();
+    
   })
   .fail(function(jqXHR, textStatus, err){
     console.log(textStatus);
@@ -402,20 +411,33 @@ function initialize_course_view(){
     contenttype: 'application/json; charset=utf-8'
   })
   .done(function(data){
-    $("#exams_container").find(".exam-cell").remove();
-    if(sessionStorage.getItem("accountType") == "Instructor")
-    {
-      show_create_exam();
+    if(data.length != 0){
+      $(".course-view-div").css({overflowY: "scroll"});
+      $("#exams_container").find(".exam-cell").remove();
+      if(sessionStorage.getItem("accountType") == "Instructor")
+      {
+        show_create_exam();
+      }
+      $("#course_view_course_name").text(data[0].course_name);
+      $("#upload_mcq_button").data("courseId", data[0].id);
+      $("#upload_tf_button").data("courseId", data[0].id);
+      $("#upload_fill_button").data("courseId", data[0].id);
+      $(".course-view-div").data("courseId", data[0].id);
+      $(".course-view-div").data("courseName", data[0].course_name);
+      $('#create_new_exam_form').attr('action', `create_exam/${data[0].id}/${data[0].course_name}`);
+      get_course_question_count(data[0].id);
+      get_all_questions_grade(data[0].id);
     }
-    $("#course_view_course_name").text(data[0].course_name);
-    $("#upload_mcq_button").data("courseId", data[0].id);
-    $("#upload_tf_button").data("courseId", data[0].id);
-    $("#upload_fill_button").data("courseId", data[0].id);
-    $(".course-view-div").data("courseId", data[0].id);
-    $(".course-view-div").data("courseName", data[0].course_name);
-    $('#create_new_exam_form').attr('action', `create_exam/${data[0].id}/${data[0].course_name}`);
-    get_course_question_count(data[0].id);
-    get_all_questions_grade(data[0].id);
+    else{
+     $(".course-view-div").css({overflowY: "hidden"});
+      $(".course-view-div").append(`
+        <div class = "no-course-view-container">
+          <img src = "../public/assets/images/white_quiz_reviewer_logo.png" id = "course_view_logo">
+          <h6>You have not joined any courses. Please join a course first.</h6>
+        </div>
+      `)
+      $("#course_view_loader").fadeOut(200);
+    }
   })
   .fail(function(jqXHR, textStatus, err){
     console.log(textStatus);
@@ -707,11 +729,11 @@ function get_course_question_count(course_id){
       $("#exams_container").prepend(`
       <div class = "exam-cell" id = "all_question_exam_cell">
         <div class = "exam-details-container">
-            <div class = "exam-icon-container">
-                <i class = "material-icons exam-icon">library_books</i>
+            <i class = "material-icons exam-icon">library_books</i>
+            <div class = "exam-details-text-container">
+              <h6 class = "exam-name-text">All Questions</h6>
+              <h6 class = "exam-questions-text">${data[0].question_count} questions</h6>
             </div>
-            <h6 class = "exam-name-text">All Questions</h6>
-            <h6 class = "exam-questions-text">${data[0].question_count} questions</h6>
         </div>
         <form action = "/exam/${course_id}/0" method = "GET">
           <div class = "take-exam-container" id = "take_exam_container_all${course_id}">
@@ -728,9 +750,8 @@ function get_course_question_count(course_id){
         `);
         $(`#download_all_questions_button${course_id}`).data("courseId", course_id);
       }
-      get_exams(course_id);
-
     }
+    get_exams(course_id);
   })
   .fail(function(jqXHR, textStatus, err){
     console.log(textStatus);
@@ -918,11 +939,11 @@ function populate_exams(data){
     $("#all_question_exam_cell").after(`
     <div class = "exam-cell">
       <div class = "exam-details-container">
-          <div class = "exam-icon-container">
-              <i class = "material-icons exam-icon" id="exam_icon${item.id}">library_books</i>
+          <i class = "material-icons exam-icon" id="exam_icon${item.id}">library_books</i>
+          <div class = "exam-details-text-container">
+            <h6 class = "exam-name-text">${item.exam_name}</h6>
+            <h6 class = "exam-questions-text">${item.question_count} questions</h6>
           </div>
-          <h6 class = "exam-name-text">${item.exam_name}</h6>
-          <h6 class = "exam-questions-text">${item.question_count} questions</h6>
       </div>
       <form action = "/exam/${item.course_id}/${item.id}" method = "GET">
           <div class = "take-exam-container" id = "take_exam_container${item.id}">
@@ -951,7 +972,7 @@ function populate_my_questions(data){
   data.forEach( (item, i) => {
     $(".my-questions-div").append(`
       <div class = "my-question-cell">
-        <h6>${item.question_content}</h6>
+        <h6 class = "edit-my-question-text">${item.question_content}</h6>
         <div class = "my-question-options-container">
           <i class = "material-icons delete-question-button" id = "delete_question_button${i}">delete</i>
           <i class = "material-icons edit-question-button" id = "edit_question_button${i}">edit</i>
@@ -1208,7 +1229,7 @@ function populate_question_details(data){
           <div class = "edit-correct-answer-div" id = "edit_question_true_button" style = "background-color: #58A4B0">
             <i class = "material-icons correct-icon">check</i>
           </div>
-            <h6 class = "edit-answer-input">True</h6>
+            <input class = "edit-answer-input" value = "True" disabled></input>
           </div>
         `)
       $(".edit-question-container").append(`
@@ -1216,7 +1237,7 @@ function populate_question_details(data){
             <div class = "edit-correct-answer-div" id = "edit_question_false_button">
               <i class = "material-icons correct-icon"></i>
             </div>
-            <h6 class = "edit-answer-input">False</h6>
+            <input class = "edit-answer-input" value = "False" disabled></input>
           </div>
         `);
       $("#save_edit_question_button").data("truth", 1);
@@ -1227,7 +1248,7 @@ function populate_question_details(data){
           <div class = "edit-correct-answer-div" id = "edit_question_true_button">
             <i class = "material-icons correct-icon"></i>
           </div>
-            <h6 class = "edit-answer-input">True</h6>
+            <input class = "edit-answer-input" value = "True" disabled></input>
           </div>
         `)
       $(".edit-question-container").append(`
@@ -1235,7 +1256,7 @@ function populate_question_details(data){
           <div class = "edit-correct-answer-div" id = "edit_question_false_button" style = "background-color: #58A4B0">
             <i class = "material-icons correct-icon">check</i>
           </div>
-            <h6 class = "edit-answer-input">False</h6>
+            <input class = "edit-answer-input" value = "False" disabled></input>
           </div>
         `);
       
