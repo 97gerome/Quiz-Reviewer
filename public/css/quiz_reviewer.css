@@ -367,6 +367,7 @@ button:hover, #cancel_create_course_button:hover{
     left: 10px;
     font-size: 32px;
     display: none;
+    cursor: pointer;
 }
 
 #top_bar_logo{
