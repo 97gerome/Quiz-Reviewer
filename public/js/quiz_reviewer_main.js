@@ -416,7 +416,6 @@ function initialize_course_view(){
   })
   .done(function(data){
     if(data.length != 0){
-      $(".course-view-div").css({overflowY: "scroll"});
       $("#exams_container").find(".exam-cell").remove();
       if(sessionStorage.getItem("accountType") == "Instructor")
       {
@@ -537,6 +536,7 @@ function get_exams(course_id){
   })
   .done(function(data){
     populate_exams(data);
+    $(".course-view-div").css({overflowY: "scroll"});
     $("#exams_container_loader").fadeOut(200);
     $("#course_view_loader").fadeOut(200);
   })
