@@ -435,6 +435,7 @@ function initialize_course_view(){
     contenttype: 'application/json; charset=utf-8'
   })
   .done(function(data){
+    $(".no-course-view-container").remove();
     if(data.length != 0){
       $("#exams_container").find(".exam-cell").remove();
       if(sessionStorage.getItem("accountType") == "Instructor")
