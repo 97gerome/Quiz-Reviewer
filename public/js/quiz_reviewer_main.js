@@ -579,6 +579,9 @@ function add_fill_question(){
       }
     })
     .done(function(data){
+      $("#exams_container").find(".exam-cell").remove();
+      $("#exams_loader").css({display: "flex"});
+      get_course_question_count($("#upload_fill_button").data("courseId"));
       show_pop_up("#notification_pop_up", data);
       refresh_my_questions();
       $("#upload_loader").fadeOut(200);
@@ -603,6 +606,9 @@ function add_tf_question(){
       }
     })
     .done(function(data){
+      $("#exams_container").find(".exam-cell").remove();
+      $("#exams_loader").css({display: "flex"});
+      get_course_question_count($("#upload_tf_button").data("courseId"));
       show_pop_up("#notification_pop_up", data);
       refresh_my_questions();
       $("#upload_loader").fadeOut(200);
@@ -634,6 +640,9 @@ function add_mcq_question(){
       }
     })
     .done(function(data){
+      $("#exams_container").find(".exam-cell").remove();
+      $("#exams_loader").css({display: "flex"});
+      get_course_question_count($("#upload_mcq_button").data("courseId"));
       show_pop_up("#notification_pop_up", data);
       refresh_my_questions();
       $("#upload_loader").fadeOut(200);
