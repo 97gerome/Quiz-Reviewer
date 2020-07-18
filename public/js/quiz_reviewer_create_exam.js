@@ -74,14 +74,13 @@ $(document).ready(function(){
             added_questions_arr.push($(this).data("questionId"));
             node = document.getElementById($(this).attr('id'));
             document.getElementById(`course_outcome${$(this).data("courseOutcomeNumber")}_added_container`).appendChild(node);
-            console.log(added_questions_arr[0])
         }
         else{
             var index = added_questions_arr.indexOf($(this).data("questionId"));
             if (index > -1) { added_questions_arr.splice(index, 1) }
             node = document.getElementById($(this).attr('id'));
             document.getElementById(`course_outcome${$(this).data("courseOutcomeNumber")}_container`).appendChild(node);
-            console.log(added_questions_arr[0])
+
         }
         
     })
@@ -256,7 +255,6 @@ function add_exam(){
       .done(function(data){
           added_questions_arr.forEach((item,i) => {
             add_exam_question(data[0].id, item);
-            console.log(item);
           })
           show_pop_up("#notification_pop_up", "Success!")
       })

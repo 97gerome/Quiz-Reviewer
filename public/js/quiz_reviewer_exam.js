@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-  console.log(getParameterByName("exam"));
   if(sessionStorage.getItem("questions") === null){
     if(getParameterByName("exam") == 0){
       get_all_questions();
@@ -25,7 +24,6 @@ $(document).ready(function(){
   }
 
   $(document).on("click", ".exam-answers-cell", function(){
-    console.log($(this).data("answerId"))
     $(".exam-answers-cell").css({backgroundColor: "white", color: "black", borderColor: "#D8DBE2"});
     $(this).css({backgroundColor: "#58A4B0", color: "white", borderColor: "#58A4B0"});
     if($(this).data("questionTypeId") == 1){
@@ -117,7 +115,6 @@ function get_all_questions(){
       }
     })
     .done(function(data){
-      console.log(data)
       sessionStorage.setItem("examCourse", data[0].course_code);
       sessionStorage.setItem("examName", "All Questions");
       $(".exam-course-text").text(`${sessionStorage.getItem("examCourse")} ${sessionStorage.getItem("examName")}`);
@@ -326,9 +323,8 @@ function grade_increment(){
 
 function click_answers(){
   $(document).on("click", ".exam-answers-cell", function(){
-    console.log($(this).data("answerId"))
-    $(".exam-answers-cell").css({backgroundColor: "white", color: "black"});
-    $(this).css({backgroundColor: "#58A4B0", color: "white"});
+    $(".exam-answers-cell").css({backgroundColor: "white", color: "black", borderColor: "#D8DBE2"});
+    $(this).css({backgroundColor: "#58A4B0", color: "white", borderColor: "#58A4B0"});
     if($(this).data("questionTypeId") == 1){
       $(".check-question-button").data("answerId", $(this).data("answerId"));
     }

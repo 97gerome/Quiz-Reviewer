@@ -836,8 +836,6 @@ function get_exam_grades(course_id){
         </div>
       </div>`);
     })
-
-    console.log($("#grades_container").find(".grades-cell").length)
     if($("#grades_container").find(".grades-cell").length == 0){
       $("#grades_container").append(`
         <div id = "no_grades_container">

@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+  console.log('App by: 97G');
   $("#show_signup_button").click(function(){
     $("#login_form").animate({left: "-100%"}, 400);
     $("#signup_form").animate({right: "0px"}, 400);
