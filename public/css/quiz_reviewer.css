@@ -1924,6 +1924,7 @@ input:disabled {
     top: 0;
     left: 0;
     background-color: white;
+    border-radius: 10px;
 
 }
 
