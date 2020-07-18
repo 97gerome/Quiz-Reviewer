@@ -1170,7 +1170,6 @@ button:hover, #cancel_create_course_button:hover{
 
 .profile-details-container{
     width: 100%;
-    height: 46px;
 }
 
 .profile-cell, .change-password-cell{
@@ -2274,7 +2273,6 @@ input:disabled {
 
     [class = "mainview-div"]{
         height: auto;
-        padding-bottom: 40px;
     }
 
     body{
@@ -2283,17 +2281,11 @@ input:disabled {
 
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
     [class = "my-account-label"]{
         width: 100px !important;
         margin: 10px !important;
         margin-left: 0 !important;
-    }
-
-    [class = "profile-details-container"]{
-        height: auto;
-        padding: 5px 10px;
-        width: calc(100% - 20px);
     }
 
     [class = "edit-my-question-text"]{
