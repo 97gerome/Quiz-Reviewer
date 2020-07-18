@@ -840,7 +840,8 @@ button:hover, #cancel_create_course_button:hover{
     padding: 0 10px;
     outline: none;
     resize: none;
-
+    font-size: 13px;
+    vertical-align: top;
 }
 
 #edit_question_details_text{
@@ -2027,6 +2028,8 @@ input:disabled {
 
     [id = "next_question_button"]{
         width: 120px !important;
+        height: 35px !important;
+        margin: 25px 20px !important;
     }
 
     [class = "check-question-button"]{
@@ -2035,7 +2038,7 @@ input:disabled {
     }
 
     [class = "exam-question-text"]{
-        height: calc(100% - 363px);
+        height: calc(100% - 358px);
         font-size: 18px;
     }
 
@@ -2301,6 +2304,19 @@ input:disabled {
 
     [class = "my-account-input"]{
         width: 180px !important;
+    }
+
+    [id = "fill_exam_answer_input"]{
+        font-size: 15px !important;
+    }
+
+    [id = "answer_status_text"]{
+        font-size: 17px !important;
+        margin: 32px 20px !important;
+    }
+
+    [class = "question-counter-text"]{
+        font-size: 16px;
     }
 
 }

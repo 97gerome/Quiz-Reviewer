@@ -26,8 +26,8 @@ $(document).ready(function(){
 
   $(document).on("click", ".exam-answers-cell", function(){
     console.log($(this).data("answerId"))
-    $(".exam-answers-cell").css({backgroundColor: "white", color: "black"});
-    $(this).css({backgroundColor: "#58A4B0", color: "white"});
+    $(".exam-answers-cell").css({backgroundColor: "white", color: "black", borderColor: "#D8DBE2"});
+    $(this).css({backgroundColor: "#58A4B0", color: "white", borderColor: "#58A4B0"});
     if($(this).data("questionTypeId") == 1){
       $(".check-question-button").data("answerId", $(this).data("answerId"));
     }
