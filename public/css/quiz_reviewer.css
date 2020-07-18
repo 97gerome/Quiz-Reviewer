@@ -385,13 +385,13 @@ button:hover, #cancel_create_course_button:hover{
     color: white;
     position: absolute;
     left: 10px;
-    font-size: 32px;
+    font-size: 24px;
     display: none;
     cursor: pointer;
 }
 
 #top_bar_logo{
-    height: 30px;
+    height: 40px;
 }
 
 .top-bar h6{
@@ -2258,6 +2258,11 @@ input:disabled {
 
     [class = "top-bar"]{
         width: 100%;
+        height: 50px;
+    }
+
+    [id = "top_bar_logo"]{
+        height: 28px !important;
     }
 
     [class = "background-div"]{
