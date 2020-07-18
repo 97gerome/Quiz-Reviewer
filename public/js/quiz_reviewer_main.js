@@ -11,6 +11,8 @@ $(document).ready(function(){
     get_account_details();
     get_my_questions();
     
+    var mql = window.matchMedia('(min-width: 769px)');
+    mql.addListener(screenTest);
 
     $("#true_false_button").click(function(){
       $(".question-type-highlight").animate({marginTop: "40px"}, { duration: 200, queue: false });
@@ -70,15 +72,31 @@ $(document).ready(function(){
   
     $("#courses_button").click(function(){
       show_main_containers(".my-account-container", ".my-questions-container", ".course-view-container", ".courses-container");
-      $(".navbar-div").animate({left: "-240px"});
-      $('.main-container-div').animate({scrollTop:0}, '200');
+      $(".mainview-modal-overlay").fadeOut(200);
+      if(!mql.matches){
+        $(".navbar-div").animate({left: "-240px"});
+        $('.main-container-div').animate({scrollTop:0}, '200');
+        $("body").css({overflowY: "scroll"});
+      }
     });
   
     $("#my_account_button").click(function(){
       show_main_containers(".course-view-container", ".courses-container", ".my-account-container", ".my-questions-container");
-      $(".navbar-div").animate({left: "-240px"});
-      $('.main-container-div').animate({scrollTop:0}, '200');
+      $(".mainview-modal-overlay").fadeOut(200);
+      if(!mql.matches){
+        $(".navbar-div").animate({left: "-240px"});
+        $('.main-container-div').animate({scrollTop:0}, '200');
+        $("body").css({overflowY: "scroll"});
+      }
     });
+
+    $(".mainview-modal-overlay").click(function(){
+      $(".mainview-modal-overlay").fadeOut(200);
+      if(!mql.matches){
+        $(".navbar-div").animate({left: "-240px"});
+        $("body").css({overflowY: "scroll"});
+      }
+    })
   
     $("#logout_button").click(function(){
       show_pop_up("#log_out_pop_up");
@@ -315,6 +333,8 @@ $(document).ready(function(){
 
     $("#menu_icon").click(function(){
       $(".navbar-div").animate({left: "0px"}, 200);
+      $(".mainview-modal-overlay").fadeIn(200);
+      $("body").css({overflow: "hidden"});
     })
 
 });
@@ -1335,4 +1355,11 @@ function add_to_text_file(data, last_item){
 
     sessionStorage.setItem("questionsTxt", question_str);
 
+}
+
+function screenTest(e) {
+  if (e.matches) {
+    $(".navbar-div").css({left: 0});
+    $("body").css({overflow: "hidden"});
+  }
 }
